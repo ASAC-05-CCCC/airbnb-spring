@@ -14,7 +14,7 @@ public class RoomRating {
     private Integer id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "room_id",nullable = false)
     private Room room;
 
     private float rating;

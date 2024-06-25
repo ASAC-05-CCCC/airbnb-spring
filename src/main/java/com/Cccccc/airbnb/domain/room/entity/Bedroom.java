@@ -14,7 +14,7 @@ public class Bedroom {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
     private Integer queen_bed_count;
