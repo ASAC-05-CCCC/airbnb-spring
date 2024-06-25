@@ -20,16 +20,10 @@ public class RoomRating {
     private float rating;
 
     private Integer review_count;
-
-    private Integer cleanliness;
-
-    private Integer accuracy;
-
-    private Integer checkin;
-
-    private Integer communication;
-
-    private Integer location;
-
-    private Integer value;
+    private float cleanliness;
+    private float accuracy;
+    private float checkin;
+    private float communication;
+    private float location;
+    private float value;
 }
