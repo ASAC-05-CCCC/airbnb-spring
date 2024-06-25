@@ -8,18 +8,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Bedroom {
+public class RoomCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    private Category category;
 
+    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Room room;
-
-    private Integer queen_bed_count;
-
-    private Integer king_bed_count;
-
-    private Integer double_bed_count;
 }

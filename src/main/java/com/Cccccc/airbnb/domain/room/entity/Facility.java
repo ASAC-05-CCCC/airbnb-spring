@@ -1,6 +1,9 @@
 package com.Cccccc.airbnb.domain.room.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -8,18 +11,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Bedroom {
+public class Facility {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
-    private Room room;
+    private String facilityName;
 
-    private Integer queen_bed_count;
+    private String facilityImage;
 
-    private Integer king_bed_count;
+    private Integer mainType;
 
-    private Integer double_bed_count;
+    private String subType;
 }

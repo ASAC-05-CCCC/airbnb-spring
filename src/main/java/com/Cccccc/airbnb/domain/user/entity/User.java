@@ -1,5 +1,6 @@
 package com.Cccccc.airbnb.domain.user.entity;
 
+import com.Cccccc.airbnb.domain.entity.BaseEntity;
 import com.Cccccc.airbnb.domain.user.UserRole;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name="users")
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

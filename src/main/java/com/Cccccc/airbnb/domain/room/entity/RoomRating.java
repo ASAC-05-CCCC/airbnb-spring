@@ -12,15 +12,24 @@ public class RoomRating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Room room;
+
     private float rating;
+
     private Integer review_count;
+
     private Integer cleanliness;
+
     private Integer accuracy;
+
     private Integer checkin;
+
     private Integer communication;
+
     private Integer location;
+
     private Integer value;
 }

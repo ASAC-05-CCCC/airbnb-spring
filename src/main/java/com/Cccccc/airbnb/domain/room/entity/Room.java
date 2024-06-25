@@ -1,5 +1,6 @@
 package com.Cccccc.airbnb.domain.room.entity;
 
+import com.Cccccc.airbnb.domain.entity.BaseEntity;
 import com.Cccccc.airbnb.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Room {
+public class Room extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

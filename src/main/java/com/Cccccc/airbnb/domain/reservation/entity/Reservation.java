@@ -1,5 +1,6 @@
 package com.Cccccc.airbnb.domain.reservation.entity;
 
+import com.Cccccc.airbnb.domain.entity.BaseEntity;
 import com.Cccccc.airbnb.domain.room.entity.Room;
 import com.Cccccc.airbnb.domain.user.entity.User;
 import jakarta.persistence.*;
@@ -14,7 +15,7 @@ import java.time.LocalTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Reservation {
+public class Reservation extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
