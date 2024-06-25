@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 public class RoomLike  extends BaseEntity {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "user_id",nullable = false)
     private User user;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 }

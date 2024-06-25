@@ -17,24 +17,18 @@ public class Review extends BaseEntity {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
     private Integer cleanliness;
-
     private Integer accuracy;
-
     private Integer checkin;
-
     private Integer communication;
-
     private Integer location;
-
     private Integer price;
-
     private String content;
 }

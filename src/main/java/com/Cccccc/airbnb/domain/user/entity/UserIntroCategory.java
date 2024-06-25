@@ -16,7 +16,7 @@ public class UserIntroCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String categoryName;
+    private String category_name;
 
-    private String categoryImage;
+    private String category_image;
 }

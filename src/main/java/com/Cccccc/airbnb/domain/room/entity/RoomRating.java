@@ -14,22 +14,16 @@ public class RoomRating {
     private Integer id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "room_id",nullable = false)
     private Room room;
 
     private float rating;
 
     private Integer review_count;
-
-    private Integer cleanliness;
-
-    private Integer accuracy;
-
-    private Integer checkin;
-
-    private Integer communication;
-
-    private Integer location;
-
-    private Integer value;
+    private float cleanliness;
+    private float accuracy;
+    private float checkin;
+    private float communication;
+    private float location;
+    private float value;
 }
