@@ -26,7 +26,7 @@ public class Room extends BaseEntity {
 
     private String price;
 
-    private String guestFavorite;
+    private Boolean guest_favorite;
 
     private Integer maxPeopleCount;
 
@@ -42,19 +42,19 @@ public class Room extends BaseEntity {
 
     private String city;
 
-    private String regionName1;
+    private String region_name_1;
 
-    private String regionName2;
+    private String region_name_2;
 
-    private String addressName;
+    private String address_name;
 
-    private String imageUrl1;
+    private String image_url_1;
 
-    private String imageUrl2;
+    private String image_url_2;
 
-    private String imageUrl3;
+    private String image_url_3;
 
-    private String imageUrl4;
+    private String image_url_4;
 
-    private String imageUrl5;
+    private String image_url_5;
 }

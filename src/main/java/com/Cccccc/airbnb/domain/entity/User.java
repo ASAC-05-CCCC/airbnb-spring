@@ -26,7 +26,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    private Boolean isSuperHost;
+    private Boolean superhost;
 
     private LocalDateTime hostSince;
 
