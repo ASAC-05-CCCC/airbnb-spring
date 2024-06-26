@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.room.entity;
+package com.Cccccc.airbnb.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

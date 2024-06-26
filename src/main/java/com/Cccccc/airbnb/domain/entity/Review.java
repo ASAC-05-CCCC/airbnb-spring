@@ -1,8 +1,6 @@
-package com.Cccccc.airbnb.domain.review.entity;
+package com.Cccccc.airbnb.domain.entity;
 
-import com.Cccccc.airbnb.domain.entity.BaseEntity;
-import com.Cccccc.airbnb.domain.room.entity.Room;
-import com.Cccccc.airbnb.domain.user.entity.User;
+import com.Cccccc.airbnb.domain.entity.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

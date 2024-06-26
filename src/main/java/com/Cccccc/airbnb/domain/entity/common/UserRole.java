@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.user;
+package com.Cccccc.airbnb.domain.entity.common;
 
 public enum UserRole {
     USER("USER"),

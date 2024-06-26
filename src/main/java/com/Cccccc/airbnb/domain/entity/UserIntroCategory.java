@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.room.entity;
+package com.Cccccc.airbnb.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,16 +11,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Facility {
+public class UserIntroCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String facilityName;
+    private String category_name;
 
-    private String facilityImage;
-
-    private Integer mainType;
-
-    private String subType;
+    private String category_image;
 }

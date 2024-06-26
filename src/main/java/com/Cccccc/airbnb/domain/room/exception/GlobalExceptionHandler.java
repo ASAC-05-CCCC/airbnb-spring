@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.room.controller.common;
+package com.Cccccc.airbnb.domain.room.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

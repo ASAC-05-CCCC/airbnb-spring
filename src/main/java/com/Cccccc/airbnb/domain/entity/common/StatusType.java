@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.entity;
+package com.Cccccc.airbnb.domain.entity.common;
 
 import java.util.Locale;
 

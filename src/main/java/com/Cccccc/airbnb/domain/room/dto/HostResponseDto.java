@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.room.controller.host.dto;
+package com.Cccccc.airbnb.domain.room.dto;
 
 
 import lombok.AllArgsConstructor;
