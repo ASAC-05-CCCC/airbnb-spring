@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @AllArgsConstructor
@@ -29,6 +31,7 @@ public class Review extends BaseEntity {
     private Integer checkin;
     private Integer communication;
     private Integer location;
-    private Integer price;
+    private Integer value;
     private String content;
+    private LocalDateTime creation_date;
 }
