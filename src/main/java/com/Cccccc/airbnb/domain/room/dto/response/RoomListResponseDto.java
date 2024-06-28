@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.room.dto;
+package com.Cccccc.airbnb.domain.room.dto.response;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
-public class RoomListDto {
+public class RoomListResponseDto {
     private Integer accommodationId;
     private String accommodationName;
     private String countryLocationName;

@@ -3,14 +3,15 @@ package com.Cccccc.airbnb.domain.room.service;
 
 import com.Cccccc.airbnb.domain.entity.Bedroom;
 import com.Cccccc.airbnb.domain.entity.RoomRating;
-import com.Cccccc.airbnb.domain.room.dto.FooterResponseDto;
-import com.Cccccc.airbnb.domain.room.dto.RoomResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.CategoryResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.FooterResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.RoomResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.request.FilterCountRequestDto;
+import com.Cccccc.airbnb.domain.room.dto.response.RoomFacilityResponseDto;
 import com.Cccccc.airbnb.domain.room.exception.RoomNotFoundException;
-import com.Cccccc.airbnb.domain.room.dto.HostResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.HostResponseDto;
 import com.Cccccc.airbnb.domain.entity.Room;
-import com.Cccccc.airbnb.domain.room.repository.BedroomRepository;
-import com.Cccccc.airbnb.domain.room.repository.RoomRatingRepository;
-import com.Cccccc.airbnb.domain.room.repository.RoomRepository;
+import com.Cccccc.airbnb.domain.room.repository.*;
 import com.Cccccc.airbnb.domain.entity.User;
 import com.Cccccc.airbnb.domain.room.utils.BriefRoomInfoUtil;
 import com.Cccccc.airbnb.domain.room.utils.ImageUrlUtil;
@@ -18,16 +19,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class RoomService {
-    private final RoomRepository  RoomRepository ;
+    private final RoomRepository roomRepository ;
     private final RoomRatingRepository RoomRatingRepository;
     private final BedroomRepository BedroomRepository;
+    private final CategoryRepository categoryRepository;
+    private final FacilityRepository facilityRepository;
 
     public HostResponseDto getHostByRoomId(Integer roomId) {
-        Room room = RoomRepository.findById(roomId)
+        Room room = roomRepository.findById(roomId)
                 .orElseThrow(() -> new RoomNotFoundException("Room with id " + roomId + " not found"));
         RoomRating roomRating =  RoomRatingRepository.findById(roomId)
                 .orElseThrow(() -> new RoomNotFoundException("Room with id " + roomId + " not found"));
@@ -43,7 +47,7 @@ public class RoomService {
     }
 
     public RoomResponseDto getRoomByRoomId(Integer roomId) {
-        Room room = RoomRepository.findById(roomId)
+        Room room = roomRepository.findById(roomId)
                 .orElseThrow(() -> new RoomNotFoundException("Room with id " + roomId + " not found"));
         Bedroom bedroom = BedroomRepository.findById(roomId)
                 .orElseThrow(()-> new RoomNotFoundException("Room with id " + roomId + " not found"));
@@ -72,7 +76,7 @@ public class RoomService {
     }
 
     public FooterResponseDto getFooterByRoomId(Integer roomId) {
-        Room room = RoomRepository.findById(roomId)
+        Room room = roomRepository.findById(roomId)
                 .orElseThrow(() -> new RoomNotFoundException("Room with id " + roomId + " not found"));
 
         return new FooterResponseDto(
@@ -80,5 +84,28 @@ public class RoomService {
                 room.getRegion_name_2(),
                 room.getCity()
         );
+    }
+
+    public List<CategoryResponseDto> getAllCategories() {
+        return categoryRepository.findAll().stream()
+                .map(category -> new CategoryResponseDto(category.getCategory_name(), category.getImage()))
+                .collect(Collectors.toList());
+    }
+
+    public Integer getRoomCount(FilterCountRequestDto filterCountRequestDto) {
+        Integer result = roomRepository.getRoomCount(filterCountRequestDto.getMinPrice(),
+                filterCountRequestDto.getMaxPrice(),
+                filterCountRequestDto.getBedroomCount(),
+                filterCountRequestDto.getBedCount(),
+                filterCountRequestDto.getBathroomCount(),
+                filterCountRequestDto.getIsPreference(),
+                filterCountRequestDto.getFacilitiesOption());
+
+        return result;
+    }
+
+    public List<RoomFacilityResponseDto> getRoomFacility(Integer id) {
+        List<RoomFacilityResponseDto> result = facilityRepository.getRoomFacility(id);
+        return result;
     }
 }

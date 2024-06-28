@@ -1,21 +1,22 @@
 package com.Cccccc.airbnb.domain.room.controller;
 
-import com.Cccccc.airbnb.domain.room.dto.FooterResponseDto;
-import com.Cccccc.airbnb.domain.room.dto.HostResponseDto;
-import com.Cccccc.airbnb.domain.room.dto.RoomResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.CategoryResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.FooterResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.HostResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.RoomResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.request.FilterCountRequestDto;
+import com.Cccccc.airbnb.domain.room.dto.response.RoomFacilityResponseDto;
 import com.Cccccc.airbnb.domain.room.service.RoomService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/api/c2/room")
 @RequiredArgsConstructor
 public class RoomController {
-
     private final RoomService roomService;
 
     @GetMapping("/host/{id}")
@@ -31,5 +32,22 @@ public class RoomController {
     @GetMapping("/footer/{id}")
     public FooterResponseDto getFooterByRoomId(@PathVariable Integer id){
         return roomService.getFooterByRoomId(id);
+    }
+
+    @GetMapping("/filter/category")
+    public List<CategoryResponseDto> getCategories() {
+        return roomService.getAllCategories();
+    }
+
+    @GetMapping("/filter/count")
+    public Integer getRoomCount(@ModelAttribute FilterCountRequestDto filterCountRequestDto ) {
+        Integer roomCountResult = roomService.getRoomCount(filterCountRequestDto);
+        return roomCountResult;
+    }
+
+    @GetMapping("/{id}/facility")
+    public List<RoomFacilityResponseDto> getRoomFacility(@PathVariable Integer id) {
+        List<RoomFacilityResponseDto> roomFacilityResult = roomService.getRoomFacility(id);
+        return roomFacilityResult;
     }
 }

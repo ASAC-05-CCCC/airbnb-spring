@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.room.dto;
+package com.Cccccc.airbnb.domain.room.dto.request;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
-public class RoomFilterDto {
+public class RoomFilterRequestDto {
     private String location;
     private Integer guest;
     private Integer minPrice;
