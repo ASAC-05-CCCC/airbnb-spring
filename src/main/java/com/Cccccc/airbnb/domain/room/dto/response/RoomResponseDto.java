@@ -1,4 +1,4 @@
-package com.Cccccc.airbnb.domain.room.dto;
+package com.Cccccc.airbnb.domain.room.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

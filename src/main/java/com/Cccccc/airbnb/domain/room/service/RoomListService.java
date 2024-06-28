@@ -1,8 +1,8 @@
 package com.Cccccc.airbnb.domain.room.service;
 
 import com.Cccccc.airbnb.domain.entity.Room;
-import com.Cccccc.airbnb.domain.room.dto.RoomFilterDto;
-import com.Cccccc.airbnb.domain.room.dto.RoomListDto;
+import com.Cccccc.airbnb.domain.room.dto.request.RoomFilterRequestDto;
+import com.Cccccc.airbnb.domain.room.dto.response.RoomListResponseDto;
 import com.Cccccc.airbnb.domain.room.repository.RoomListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,22 +22,22 @@ public class RoomListService {
     private static final double FIXED_LATITUDE = 37.554380;
     private static final double FIXED_LONGITUDE = 126.909260;
 
-    public Page<RoomListDto> getFilteredRooms(Pageable pageable, RoomFilterDto roomFilterDto) {
+    public Page<RoomListResponseDto> getFilteredRooms(Pageable pageable, RoomFilterRequestDto roomFilterRequestDto) {
 //        Page<Room> rooms = roomListRepository.findFilteredRooms(pageable, roomFilterDto);
         Page<Room> rooms = roomListRepository.findFilteredRooms(pageable,
-                roomFilterDto.getLocation(),
-                roomFilterDto.getGuest(),
-                roomFilterDto.getMinPrice(),
-                roomFilterDto.getMaxPrice(),
-                roomFilterDto.getBedCount(),
-                roomFilterDto.getBathroomCount(),
-                roomFilterDto.getIsPreference(),
-                roomFilterDto.getFacilitiesOption(),
-                roomFilterDto.getBedroomCount());
+                roomFilterRequestDto.getLocation(),
+                roomFilterRequestDto.getGuest(),
+                roomFilterRequestDto.getMinPrice(),
+                roomFilterRequestDto.getMaxPrice(),
+                roomFilterRequestDto.getBedCount(),
+                roomFilterRequestDto.getBathroomCount(),
+                roomFilterRequestDto.getIsPreference(),
+                roomFilterRequestDto.getFacilitiesOption(),
+                roomFilterRequestDto.getBedroomCount());
         return rooms.map(this::convertToDto);
     }
-    private RoomListDto convertToDto(Room room) {
-        RoomListDto dto = new RoomListDto();
+    private RoomListResponseDto convertToDto(Room room) {
+        RoomListResponseDto dto = new RoomListResponseDto();
         dto.setAccommodationId(room.getId());
         dto.setAccommodationName(room.getTitle());
         dto.setCountryLocationName(room.getCountry() + " " + room.getCity());
