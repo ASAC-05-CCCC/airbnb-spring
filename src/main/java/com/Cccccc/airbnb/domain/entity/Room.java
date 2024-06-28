@@ -57,4 +57,7 @@ public class Room extends BaseEntity {
     private String image_url_4;
 
     private String image_url_5;
+
+    @OneToOne(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private RoomRating roomRating;
 }
