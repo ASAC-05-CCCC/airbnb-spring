@@ -16,11 +16,11 @@ public class Facility {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String facility_name;
+    private String facilityName;
 
-    private String facility_image_name;
+    private String facilityImageName;
 
-    private Integer main_type;
+    private Integer mainType;
 
-    private String sub_type;
+    private String subType;
 }

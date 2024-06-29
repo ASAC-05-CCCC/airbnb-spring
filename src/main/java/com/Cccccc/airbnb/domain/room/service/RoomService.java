@@ -1,24 +1,18 @@
 package com.Cccccc.airbnb.domain.room.service;
 
 
-import com.Cccccc.airbnb.domain.entity.Bedroom;
-import com.Cccccc.airbnb.domain.entity.RoomRating;
-import com.Cccccc.airbnb.domain.room.dto.response.CategoryResponseDto;
-import com.Cccccc.airbnb.domain.room.dto.response.FooterResponseDto;
-import com.Cccccc.airbnb.domain.room.dto.response.RoomResponseDto;
+import com.Cccccc.airbnb.domain.entity.*;
+import com.Cccccc.airbnb.domain.room.dto.response.*;
 import com.Cccccc.airbnb.domain.room.dto.request.FilterCountRequestDto;
-import com.Cccccc.airbnb.domain.room.dto.response.RoomFacilityResponseDto;
 import com.Cccccc.airbnb.domain.room.exception.RoomNotFoundException;
-import com.Cccccc.airbnb.domain.room.dto.response.HostResponseDto;
-import com.Cccccc.airbnb.domain.entity.Room;
 import com.Cccccc.airbnb.domain.room.repository.*;
-import com.Cccccc.airbnb.domain.entity.User;
 import com.Cccccc.airbnb.domain.room.utils.BriefRoomInfoUtil;
 import com.Cccccc.airbnb.domain.room.utils.ImageUrlUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -107,5 +101,21 @@ public class RoomService {
     public List<RoomFacilityResponseDto> getRoomFacility(Integer id) {
         List<RoomFacilityResponseDto> result = facilityRepository.getRoomFacility(id);
         return result;
+    }
+
+    public List<FacilityResponseDto> getFacilityList(Integer mainType) {
+        List<Facility> facilities = facilityRepository.findAllByMainType(mainType);
+
+        Map<String, List<Facility>> groupedFacilities = facilities.stream()
+                .collect(Collectors.groupingBy(Facility::getSubType));
+
+        return groupedFacilities.entrySet().stream()
+                .map(entry -> new FacilityResponseDto(
+                        mainType,
+                        entry.getKey(),
+                        entry.getValue().stream().map(Facility::getFacilityName).collect(Collectors.toList()),
+                        entry.getValue().stream().map(Facility::getId).collect(Collectors.toList())
+                ))
+                .collect(Collectors.toList());
     }
 }
