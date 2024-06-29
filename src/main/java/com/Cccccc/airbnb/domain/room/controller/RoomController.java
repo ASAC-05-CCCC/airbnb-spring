@@ -1,11 +1,7 @@
 package com.Cccccc.airbnb.domain.room.controller;
 
-import com.Cccccc.airbnb.domain.room.dto.response.CategoryResponseDto;
-import com.Cccccc.airbnb.domain.room.dto.response.FooterResponseDto;
-import com.Cccccc.airbnb.domain.room.dto.response.HostResponseDto;
-import com.Cccccc.airbnb.domain.room.dto.response.RoomResponseDto;
+import com.Cccccc.airbnb.domain.room.dto.response.*;
 import com.Cccccc.airbnb.domain.room.dto.request.FilterCountRequestDto;
-import com.Cccccc.airbnb.domain.room.dto.response.RoomFacilityResponseDto;
 import com.Cccccc.airbnb.domain.room.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -49,5 +45,12 @@ public class RoomController {
     public List<RoomFacilityResponseDto> getRoomFacility(@PathVariable Integer id) {
         List<RoomFacilityResponseDto> roomFacilityResult = roomService.getRoomFacility(id);
         return roomFacilityResult;
+    }
+
+    @GetMapping("/filter/facility")
+    public List<FacilityResponseDto> getFacilityList(@RequestParam Integer mainType) {
+        List<FacilityResponseDto> facilityList = roomService.getFacilityList(mainType);
+
+        return facilityList;
     }
 }
