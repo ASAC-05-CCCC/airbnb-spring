@@ -34,4 +34,14 @@ public class Review extends BaseEntity {
     private Integer value;
     private String content;
     private LocalDateTime creation_date;
+
+    public void updateContent(Integer cleanliness, Integer accuracy, Integer checkin, Integer communication, Integer location, Integer value, String content) {
+        this.cleanliness = cleanliness;
+        this.accuracy = accuracy;
+        this.checkin = checkin;
+        this.communication = communication;
+        this.location = location;
+        this.value = value;
+        this.content = content;
+    }
 }
